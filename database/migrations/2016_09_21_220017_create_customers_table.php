@@ -17,7 +17,11 @@ class CreateCustomersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone_number');
+            $table->integer('city_id')  ->unsigned() ->index();
             $table->timestamps();
+
+            //Foreign Keys
+            $table->foreign('city_id')  ->references('id')  ->on('city')  ->onDelete('cascade')   ->onUpdate('cascade');
         });
     }
 

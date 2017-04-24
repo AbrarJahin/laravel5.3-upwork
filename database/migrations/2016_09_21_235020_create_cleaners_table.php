@@ -16,8 +16,12 @@ class CreateCleanersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->integer('city_id')  ->unsigned() ->index();
             $table->integer('quality_score');
             $table->timestamps();
+
+            //Foreign Keys
+            $table->foreign('city_id')  ->references('id')  ->on('city')  ->onDelete('cascade')   ->onUpdate('cascade');
         });
     }
 
