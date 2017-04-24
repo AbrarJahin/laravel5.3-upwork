@@ -39,6 +39,14 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+/*
+    //Not working - should have check, but don't have time
+    public function getRegister()
+    {
+        $cities = \App\City::all();
+        return view('auth.register', compact('cities'));
+    }
+*/
     /**
      * Get a validator for an incoming registration request.
      *

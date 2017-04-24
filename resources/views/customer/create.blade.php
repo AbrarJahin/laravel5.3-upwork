@@ -8,7 +8,7 @@
 
     {!! Form::open(['url' => '/customer', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-                    <div class="form-group {{ $errors->has('first_name') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('first_name') ? 'has-error' : ''}}">
                 {!! Form::label('first_name', 'First Name', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
@@ -22,6 +22,25 @@
                     {!! $errors->first('last_name', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+
+            <div class="form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
+                <label for="user_type" class="col-md-4 control-label">City</label>
+
+                <div class="col-md-6">
+                    <select class="form-control selectpicker" name="city_id" required>
+                        @foreach ($cities as $city)
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
+                    </select>
+
+                    @if ($errors->has('user_type'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('user_type') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group {{ $errors->has('phone_number') ? 'has-error' : ''}}">
                 {!! Form::label('phone_number', 'Phone Number', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

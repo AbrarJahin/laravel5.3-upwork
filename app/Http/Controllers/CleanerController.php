@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Cleaner;
+use App\City;
 use Illuminate\Http\Request;
 use Session;
 
@@ -30,7 +31,8 @@ class CleanerController extends Controller
      */
     public function create()
     {
-        return view('cleaner.create');
+        $cities = City::All();
+        return view('cleaner.create', compact('cities'));
     }
 
     /**

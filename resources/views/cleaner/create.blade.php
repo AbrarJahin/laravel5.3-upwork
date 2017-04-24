@@ -22,6 +22,23 @@
                     {!! $errors->first('last_name', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
+                <label for="user_type" class="col-md-4 control-label">City</label>
+
+                <div class="col-md-6">
+                    <select class="form-control selectpicker" name="city_id" required>
+                        @foreach ($cities as $city)
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
+                    </select>
+
+                    @if ($errors->has('user_type'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('user_type') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
             <div class="form-group {{ $errors->has('quality_score') ? 'has-error' : ''}}">
                 {!! Form::label('quality_score', 'Quality Score', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Customer;
+use App\City;
 use Illuminate\Http\Request;
 use Session;
 
@@ -30,7 +31,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.create');
+        $cities = City::All();
+        return view('customer.create', compact('cities'));
     }
 
     /**
@@ -42,7 +44,6 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        
         $requestData = $request->all();
         
         Customer::create($requestData);
