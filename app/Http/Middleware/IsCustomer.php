@@ -19,13 +19,11 @@ class IsCustomer
         //Checking if he is admin
         if ( !Auth::check() )                                           //Not Logged In
         {
-            return redirect(route('index'));
-            //return redirect()->route('index');
+            return redirect('home');
         }
         else if( strcmp("customer",Auth::user()->user_type)!=0 )           //Not admin, then redirect to default page
         {
-            return redirect(route('index'));
-            //return redirect()->route('index');
+            return redirect('home');
         }
         //End checking
         return $next($request);

@@ -38,19 +38,22 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Homework
                     </a>
-                    @if (Auth::guest())
-                    <a class="navbar-brand" href="{{ url('booking') }}">
-                        Booking
-                    </a>
-                    <a class="navbar-brand" href="{{ url('customer') }}">
-                        Customer
-                    </a>
-                    <a class="navbar-brand" href="{{ url('cleaner') }}">
-                        Cleaner
-                    </a>
-                    <a class="navbar-brand" href="{{ url('city') }}">
-                        City
-                    </a>
+                    @if (!Auth::guest())
+                        @if (strcmp(Auth::user()->user_type,"customer")==0)
+                        <a class="navbar-brand" href="{{ url('booking') }}">
+                            Booking
+                        </a>
+                        @else
+                        <a class="navbar-brand" href="{{ url('customer') }}">
+                            Customer
+                        </a>
+                        <a class="navbar-brand" href="{{ url('cleaner') }}">
+                            Cleaner
+                        </a>
+                        <a class="navbar-brand" href="{{ url('city') }}">
+                            City
+                        </a>
+                        @endif
                     @endif
                 </div>
 

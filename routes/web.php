@@ -15,10 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('customer', 'CustomerController');
-Route::resource('booking', 'BookingController');
-Route::resource('cleaner', 'CleanerController');
-Route::resource('city', 'CityController');
-Auth::routes();
+Route::group(['middleware' => 'auth'], function()
+{
+	Route::group(['middleware' => 'customer'], function()
+	{
+		Route::resource('booking', 'BookingController');
+	});
+
+	Route::group(['middleware' => 'admin'], function()
+	{
+		Route::resource('cleaner', 'CleanerController');
+		Route::resource('customer', 'CustomerController');
+	    Route::resource('city', 'CityController');
+	});
+});
 
 Route::get('/home', 'HomeController@index');
+
+Auth::routes();
