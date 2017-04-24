@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::resource('customer', 'CustomerController');
 Route::resource('booking', 'BookingController');
 Route::resource('cleaner', 'CleanerController');
+Route::resource('city', 'CityController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

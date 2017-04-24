@@ -38,6 +38,7 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Homework
                     </a>
+                    @if (Auth::guest())
                     <a class="navbar-brand" href="{{ url('booking') }}">
                         Booking
                     </a>
@@ -47,6 +48,10 @@
                     <a class="navbar-brand" href="{{ url('cleaner') }}">
                         Cleaner
                     </a>
+                    <a class="navbar-brand" href="{{ url('city') }}">
+                        City
+                    </a>
+                    @endif
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

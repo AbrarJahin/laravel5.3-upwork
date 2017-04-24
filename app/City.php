@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cleaner extends Model
+class City extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'cleaners';
+    protected $table = 'cities';
 
     /**
     * The database primary key value.
@@ -25,5 +25,5 @@ class Cleaner extends Model
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'quality_score'];
+    protected $fillable = ['name'];
 }
